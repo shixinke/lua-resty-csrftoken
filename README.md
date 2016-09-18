@@ -66,6 +66,10 @@
 
 功能：验证token是否合法
 
+##注意点
+
+目前在请求头发送token，需要在客户端完成，通过客户端在请求头中添加token
+
 #contact
 
 E-mail:ishixinke@qq.com
