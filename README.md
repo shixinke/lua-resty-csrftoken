@@ -52,7 +52,7 @@
    
    expire_time:csrf_token的有效期(默认60s)
 
-   token_name：存主的token的名称，必须与header提交的一致(默认为X-CSRF-TOKEN)
+   token_name：存储的token的名称，必须与header提交的一致(默认为X-CSRF-TOKEN)
 
 ##token
 
