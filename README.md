@@ -20,7 +20,7 @@
 		    root /data/www/web_root/;
 	     }
 
-		location =/csrfpost {
+	     location =/csrfpost {
 		    default_type text/html;
 		    access_by_lua_block {
 			local csrf_token = require 'resty.csrf_token';
@@ -34,8 +34,8 @@
 			end
 		    }
 		    content_by_lua_file /data/www/csrftoken/examples/r.lua;
-		}
-}
+	     }
+        }
 
 
 # Methods
@@ -70,7 +70,7 @@
 
 目前在请求头发送token，需要在客户端完成，通过客户端在请求头中添加token
 
-#contact
+# contact
 
 E-mail:ishixinke@qq.com
 
