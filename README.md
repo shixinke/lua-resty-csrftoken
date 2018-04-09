@@ -8,34 +8,34 @@
 	lua_shared_dict dict_csrf_token 100m;
 
 	server {
-		location =/csrfget.html {
+	    location =/csrfget.html {
 		    default_type text/html;
-	            header_filter_by_lua_block {
-				local csrf_token = require 'resty.csrf_token';
-				local csrftoken = csrf_token:new();
-                		if csrftoken ~= nil then
-                    		    csrftoken:token()
-                		end
-			}
-			root /data/www/web_root/;
-		}
+		    header_filter_by_lua_block {
+			local csrf_token = require 'resty.csrf_token';
+			local csrftoken = csrf_token:new();
+			if csrftoken ~= nil then
+			    csrftoken:token()
+			end
+		    }
+		    root /data/www/web_root/;
+	     }
 
 		location =/csrfpost {
-		     default_type text/html;
-		     access_by_lua_block {
-			 local csrf_token = require 'resty.csrf_token';
-			 local json = require 'cjson'
-			 local csrftoken = csrf_token:new();
-			 if csrftoken ~= nil then
-			     local res, err = csrftoken:filter()
-			     if res ~= true then
-				 ngx.say(json.encode({code = 5001, message = err}))
-			     end
-			 end
-		     }
-		     content_by_lua_file /data/www/csrftoken/examples/r.lua;
+		    default_type text/html;
+		    access_by_lua_block {
+			local csrf_token = require 'resty.csrf_token';
+			local json = require 'cjson'
+			local csrftoken = csrf_token:new();
+			if csrftoken ~= nil then
+			    local res, err = csrftoken:filter()
+			    if res ~= true then
+			       ngx.say(json.encode({code = 5001, message = err}))
+			    end
+			end
+		    }
+		    content_by_lua_file /data/www/csrftoken/examples/r.lua;
 		}
-	}
+}
 
 
 # Methods
