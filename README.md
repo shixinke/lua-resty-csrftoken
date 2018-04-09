@@ -1,8 +1,8 @@
-#lua-resty-csrftoken
+# lua-resty-csrftoken
 
 防止CSRF跨站攻击的类库
 
-#Overview
+# Overview
 
     lua_package_path '/the/path/to/your/project/lib/?.lua';
 	lua_shared_dict dict_csrf_token 100m;
@@ -38,9 +38,9 @@
 	}
 
 
-#Methods
+# Methods
 
-##new
+## new
 
 用法:ok = csrftoken:new(dict_name, expire_time, token_name)
 
@@ -54,19 +54,19 @@
 
    token_name：存储的token的名称，必须与header提交的一致(默认为X-CSRF-TOKEN)
 
-##token
+## token
 
 用法:csrftoken:token()
 
 功能：生成token，并将token保存到字典中，而且在响应头中添加token
 
-##filter
+## filter
 
 用法:ok,err = csrftoken:filter()
 
 功能：验证token是否合法
 
-##注意点
+## 注意点
 
 目前在请求头发送token，需要在客户端完成，通过客户端在请求头中添加token
 
